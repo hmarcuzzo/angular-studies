@@ -1,0 +1,19 @@
+<div class="container">
+  <app-cokpit
+    (serverCreated)="onServerAdded($event)"
+    (bpCreated)="onBlueprintAdded($event)"
+  ></app-cokpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      @for (serverElement of serverElements; track serverElement) {
+        <app-server-element [srvElement]="serverElement">
+          <p>
+            <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+            <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+          </p>
+        </app-server-element>
+      }
+    </div>
+  </div>
+</div>
